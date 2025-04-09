@@ -28,4 +28,7 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown closeallconnections forcemigrate dbversion sqlc test
+start:
+	go run main.go
+
+.PHONY: postgres createdb dropdb migrateup migratedown closeallconnections forcemigrate dbversion sqlc test start
