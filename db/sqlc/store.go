@@ -50,8 +50,8 @@ type TransferTxResult struct {
 	Transfer    Transfer `json:"transfer"`
 	FromAccount Account  `json:"from_account"`
 	ToAccount   Account  `json:"to_account"`
-	FromEntry   Enterei  `json:"from_entry"`
-	ToEntry     Enterei  `json:"to_entry"`
+	FromEntry   Entry    `json:"from_entry"`
+	ToEntry     Entry    `json:"to_entry"`
 }
 
 func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {

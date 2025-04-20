@@ -1,5 +1,5 @@
 postgres: 
-	docker run --name postgres17 -p 5432:5432 POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgress:17-alpine
+	docker run --name postgres17 -p 5432:5432 postgres_user=root -e postgres_password=secret -d postgress:17-alpine
 
 dbversion: 
 	migrate -path db/migrations -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" version
