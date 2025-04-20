@@ -9,9 +9,12 @@ import (
 )
 
 func createRandomUser(t *testing.T) User {
+	hashedPassword, err := utils.HashPassword(utils.RandomString(6))
+	require.NoError(t, err)
+
 	arg := CreateUserParams{
 		Username:       utils.RandomOwnerName(),
-		HashedPassword: "secret",
+		HashedPassword: hashedPassword,
 		FullName:       utils.RandomOwnerName(),
 		Email:          utils.RandomEmail(),
 	}
@@ -43,5 +46,5 @@ func TestGetUser(t *testing.T) {
 	require.Equal(t, createdUser.FullName, fetchedUser.FullName)
 	require.Equal(t, createdUser.Email, fetchedUser.Email)
 	require.WithinDuration(t, createdUser.CreatedAt, fetchedUser.CreatedAt, time.Second)
-	
+
 }
